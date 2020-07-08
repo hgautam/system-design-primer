@@ -1,4 +1,6 @@
-*[English](README.md) ∙ [日本語](README-ja.md) ∙ [简体中文](README-zh-Hans.md) ∙ [繁體中文](README-zh-TW.md) | [العَرَبِيَّة‎](https://github.com/donnemartin/system-design-primer/issues/170) ∙ [বাংলা](https://github.com/donnemartin/system-design-primer/issues/220) ∙ [Português do Brasil](https://github.com/donnemartin/system-design-primer/issues/40) ∙ [Deutsch](https://github.com/donnemartin/system-design-primer/issues/186) ∙ [ελληνικά](https://github.com/donnemartin/system-design-primer/issues/130) ∙ [עברית](https://github.com/donnemartin/system-design-primer/issues/272) ∙ [Italiano](https://github.com/donnemartin/system-design-primer/issues/104) ∙ [韓國語](https://github.com/donnemartin/system-design-primer/issues/102) ∙ [فارسی](https://github.com/donnemartin/system-design-primer/issues/110) ∙ [Polski](https://github.com/donnemartin/system-design-primer/issues/68) ∙ [русский язык](https://github.com/donnemartin/system-design-primer/issues/87) ∙ [Español](https://github.com/donnemartin/system-design-primer/issues/136) ∙ [ภาษาไทย](https://github.com/donnemartin/system-design-primer/issues/187) ∙ [Türkçe](https://github.com/donnemartin/system-design-primer/issues/39) ∙ [tiếng Việt](https://github.com/donnemartin/system-design-primer/issues/127) ∙ [Français](https://github.com/donnemartin/system-design-primer/issues/250) | [Add Translation](https://github.com/donnemartin/system-design-primer/issues/28)*
+*[English](README.md) ∙ [日本語](README-ja.md) ∙ [简体中文](README-zh-Hans.md) ∙ [繁體中文](README-zh-TW.md) | [العَرَبِيَّة‎](https://github.com/donnemartin/system-design-primer/issues/170) ∙ [বাংলা](https://github.com/donnemartin/system-design-primer/issues/220) ∙ [Português do Brasil](https://github.com/donnemartin/system-design-primer/issues/40) ∙ [Deutsch](https://github.com/donnemartin/system-design-primer/issues/186) ∙ [ελληνικά](https://github.com/donnemartin/system-design-primer/issues/130) ∙ [עברית](https://github.com/donnemartin/system-design-primer/issues/272) ∙ [Italiano](https://github.com/donnemartin/system-design-primer/issues/104) ∙ [한국어](https://github.com/donnemartin/system-design-primer/issues/102) ∙ [فارسی](https://github.com/donnemartin/system-design-primer/issues/110) ∙ [Polski](https://github.com/donnemartin/system-design-primer/issues/68) ∙ [русский язык](https://github.com/donnemartin/system-design-primer/issues/87) ∙ [Español](https://github.com/donnemartin/system-design-primer/issues/136) ∙ [ภาษาไทย](https://github.com/donnemartin/system-design-primer/issues/187) ∙ [Türkçe](https://github.com/donnemartin/system-design-primer/issues/39) ∙ [tiếng Việt](https://github.com/donnemartin/system-design-primer/issues/127) ∙ [Français](https://github.com/donnemartin/system-design-primer/issues/250) | [Add Translation](https://github.com/donnemartin/system-design-primer/issues/28)*
+
+**Help [translate](TRANSLATIONS.md) this guide!**
 
 # The System Design Primer
 
@@ -280,6 +282,7 @@ Check out the following links to get a better idea of what to expect:
 * [How to ace a systems design interview](https://www.palantir.com/2011/10/how-to-rock-a-systems-design-interview/)
 * [The system design interview](http://www.hiredintech.com/system-design)
 * [Intro to Architecture and Systems Design Interviews](https://www.youtube.com/watch?v=ZgdS0EUmn70)
+* [System design template](https://leetcode.com/discuss/career/229177/My-System-Design-Template)
 
 ## System design interview questions with solutions
 
@@ -456,7 +459,7 @@ Waiting for a response from the partitioned node might result in a timeout error
 
 #### AP - availability and partition tolerance
 
-Responses return the most recent version of the data available on a node, which might not be the latest.  Writes might take some time to propagate when the partition is resolved.
+Responses return the most readily available version of the data available on any node, which might not be the latest.  Writes might take some time to propagate when the partition is resolved.
 
 AP is a good choice if the business needs allow for [eventual consistency](#eventual-consistency) or when the system needs to continue working despite external errors.
 
@@ -465,6 +468,7 @@ AP is a good choice if the business needs allow for [eventual consistency](#even
 * [CAP theorem revisited](http://robertgreiner.com/2014/08/cap-theorem-revisited/)
 * [A plain english introduction to CAP theorem](http://ksat.me/a-plain-english-introduction-to-cap-theorem)
 * [CAP FAQ](https://github.com/henryr/cap-faq)
+* [The CAP theorem](https://www.youtube.com/watch?v=k-Yaq8AHlFA)
 
 ## Consistency patterns
 
@@ -494,7 +498,7 @@ This approach is seen in file systems and RDBMSes.  Strong consistency works wel
 
 ## Availability patterns
 
-There are two main patterns to support high availability: **fail-over** and **replication**.
+There are two complementary patterns to support high availability: **fail-over** and **replication**.
 
 ### Fail-over
 
@@ -665,7 +669,7 @@ Load balancers distribute incoming client requests to computing resources such a
 
 * Preventing requests from going to unhealthy servers
 * Preventing overloading resources
-* Helping eliminate single points of failure
+* Helping to eliminate a single point of failure
 
 Load balancers can be implemented with hardware (expensive) or with software such as HAProxy.
 
@@ -692,7 +696,7 @@ Layer 4 load balancers look at info at the [transport layer](#communication) to 
 
 ### Layer 7 load balancing
 
-Layer 7 load balancers look at the [application layer](#communication) to decide how to distribute requests.  This can involve contents of the header, message, and cookies.  Layer 7 load balancers terminates network traffic, reads the message, makes a load-balancing decision, then opens a connection to the selected server.  For example, a layer 7 load balancer can direct video traffic to servers that host videos while directing more sensitive user billing traffic to security-hardened servers.
+Layer 7 load balancers look at the [application layer](#communication) to decide how to distribute requests.  This can involve contents of the header, message, and cookies.  Layer 7 load balancers terminate network traffic, reads the message, makes a load-balancing decision, then opens a connection to the selected server.  For example, a layer 7 load balancer can direct video traffic to servers that host videos while directing more sensitive user billing traffic to security-hardened servers.
 
 At the cost of flexibility, layer 4 load balancing requires less time and computing resources than Layer 7, although the performance impact can be minimal on modern commodity hardware.
 
@@ -710,7 +714,7 @@ Load balancers can also help with horizontal scaling, improving performance and 
 ### Disadvantage(s): load balancer
 
 * The load balancer can become a performance bottleneck if it does not have enough resources or if it is not configured properly.
-* Introducing a load balancer to help eliminate single points of failure results in increased complexity.
+* Introducing a load balancer to help eliminate a single point of failure results in increased complexity.
 * A single load balancer is a single point of failure, configuring multiple load balancers further increases complexity.
 
 ### Source(s) and further reading
